@@ -1,0 +1,71 @@
+/* styles.css */
+.slot-machine {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.reels {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.reel {
+  font-size: 2rem;
+  margin: 0 10px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Efecto de giro hacia arriba */
+.spinning.up {
+  animation: spinUp 0.2s linear infinite;
+}
+
+/* Efecto de giro hacia abajo */
+.spinning.down {
+  animation: spinDown 0.2s linear infinite;
+}
+
+/* Animación que simula el movimiento de rodillo hacia arriba */
+@keyframes spinUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Animación que simula el movimiento de rodillo hacia abajo */
+@keyframes spinDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.result {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+/* Estilo para el botón */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 40px; /* Aumentar margen superior para bajar el botón */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
