@@ -1,25 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import Reel from "./Reel";
 import "./styles.css";
 
-const numbers = ["💜", "💛", "🧡", "💚", "💙"]; // Lista de números 
+const numbers = ["💜", "💛", "🧡", "💚", "💙"];
 
 const SlotMachine = () => {
+  useEffect(() => {
+    document.title = "FortuneFlare - ¡Slots!"; // Cambia el título de la página
+  }, []);
   const [reels, setReels] = useState([
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0],
   ]);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [winningRowIndex, setWinningRowIndex] = useState(null); // Store the index of the winning row
+  const [winningCells, setWinningCells] = useState([]); // Array to store winning cell coordinates
   const [resultMessage, setResultMessage] = useState("");
 
   const spin = () => {
-    if (isSpinning) return; // Evita girar si ya está girando
+    if (isSpinning) return; // Prevent spinning if already spinning
 
     setIsSpinning(true);
-    setWinningRowIndex(null); // Reset winning row index before spinning
-    const spins = 10; // Número de giros
+    setWinningCells([]); // Reset winning cells before spinning
+    const spins = 10;
     let currentSpins = 0;
 
     const interval = setInterval(() => {
@@ -29,52 +32,66 @@ const SlotMachine = () => {
       setReels(newReels);
       currentSpins += 1;
 
-      // Si hemos completado todos los giros, detener la animación
       if (currentSpins >= spins) {
         clearInterval(interval);
-        // Muestra el resultado final
-        const finalReels = reels.map((row) =>
-          row.map(() => Math.floor(Math.random() * numbers.length))
-        );
+        const finalReels = newReels; // Use the last generated reels
         setReels(finalReels);
         setIsSpinning(false);
 
-        // Imprimir el resultado en la consola
         console.log("Resultados finales:", finalReels.map(row => row.map(num => numbers[num])));
-
-        // Check for win condition
         checkWin(finalReels);
       }
-    }, 50); // Ajusta la velocidad del giro
+    }, 50);
   };
 
   const checkWin = (finalReels) => {
-    // Check if any row has three of the same number
-    const winningIndex = finalReels.findIndex(row =>
-      row[0] === row[1] && row[1] === row[2]
-    );
+    const winningCoordinates = [];
 
-    if (winningIndex !== -1) {
-      setWinningRowIndex(winningIndex); // Set the winning row index
+    // Check rows for win
+    finalReels.forEach((row, rowIndex) => {
+      if (row[0] === row[1] && row[1] === row[2]) {
+        winningCoordinates.push([rowIndex, 0], [rowIndex, 1], [rowIndex, 2]);
+      }
+    });
+
+    // Check columns for win
+    for (let col = 0; col < 3; col++) {
+      if (finalReels[0][col] === finalReels[1][col] && finalReels[1][col] === finalReels[2][col]) {
+        winningCoordinates.push([0, col], [1, col], [2, col]);
+      }
+    }
+
+    // Check diagonals for win
+    if (finalReels[0][0] === finalReels[1][1] && finalReels[1][1] === finalReels[2][2]) {
+      winningCoordinates.push([0, 0], [1, 1], [2, 2]);
+    }
+    if (finalReels[0][2] === finalReels[1][1] && finalReels[1][1] === finalReels[2][0]) {
+      winningCoordinates.push([0, 2], [1, 1], [2, 0]);
+    }
+
+    if (winningCoordinates.length > 0) {
+      setWinningCells(winningCoordinates); // Store winning cells
       setResultMessage("¡Ganaste!");
     } else {
       setResultMessage("Intenta de nuevo!");
     }
   };
 
+  const isWinningCell = (rowIndex, reelIndex) => {
+    return winningCells.some(([winRow, winCol]) => winRow === rowIndex && winCol === reelIndex);
+  };
+
   return (
     <div className="slot-machine">
-      <div className="reels-container"> {/* Nuevo div contenedor para las filas */}
+      <div className="reels-container">
         {reels.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className={`reels ${winningRowIndex === rowIndex ? "highlight" : ""}`}
-          >
+          <div key={rowIndex} className="reels">
             {row.map((reel, reelIndex) => (
               <Reel
                 key={reelIndex}
                 symbol={numbers[reel]}
                 spinning={isSpinning}
+                highlight={isWinningCell(rowIndex, reelIndex)} // Highlight if it's a winning cell
               />
             ))}
           </div>
