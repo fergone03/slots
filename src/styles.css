@@ -1,71 +1,102 @@
-/* styles.css */
+html,
+body {
+  height: 100%; /* Ensure full height for body */
+  margin: 0; /* Remove default margin */
+}
+
+body {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: #f0f0f0; /* Background color */
+}
+
 .slot-machine {
   text-align: center;
-  margin-top: 50px;
+  padding: 20px; /* Padding around the slot machine */
+  border-radius: 10px; /* Rounded corners for the container */
+  background-color: white; /* Background color for the slot machine */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  width: 100%; /* Make the slot machine responsive */
+  max-width: 400px; /* Set a max-width for larger screens */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.slot-machine {
+    text-align: center;
+    padding: 20px; /* Padding around the slot machine */
+    border-radius: 10px; /* Rounded corners for the container */
+    background-color: white; /* Background color for the slot machine */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    width: 100%; /* Make the slot machine responsive */
+    max-width: 400px; /* Set a max-width for larger screens */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.reels-container {
+    display: flex;
+    flex-direction: column; /* Arrange reels vertically */
+    justify-content: center; /* Center the reels vertically */
+    align-items: center; /* Center the reels horizontally */
 }
 
 .reels {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center align vertically */
+    margin-bottom: 0; /* No space between rows */
+    width: fit-content; /* Adjust width to fit contents */
 }
+
+/* Otros estilos permanecen igual... */
+
 
 .reel {
-  font-size: 2rem;
-  margin: 0 10px;
-  width: 50px;
-  height: 50px;
-  border: 2px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  font-size: 1.5rem; /* Font size for the symbols */
+  margin: 0 0.1rem; /* Reduced horizontal margin between reels */
+  transition: transform 0.5s; /* Transition for spinning animation */
 }
 
-/* Efecto de giro hacia arriba */
-.spinning.up {
-  animation: spinUp 0.2s linear infinite;
+.reel-symbol {
+  line-height: 1; /* Reduce line-height to minimize height */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove any padding */
+  font-size: inherit; /* Inherit the font size from the parent */
+  text-align: center; /* Center the text */
 }
 
-/* Efecto de giro hacia abajo */
-.spinning.down {
-  animation: spinDown 0.2s linear infinite;
+.reel-spinning {
+  animation: spin 0.5s infinite;
 }
 
-/* Animación que simula el movimiento de rodillo hacia arriba */
-@keyframes spinUp {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+.highlight {
+  background-color: #ffff00; /* Highlight color for winning row */
 }
 
-/* Animación que simula el movimiento de rodillo hacia abajo */
-@keyframes spinDown {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-.result {
-  font-size: 1.5rem;
-  margin-top: 20px;
-}
-
-/* Estilo para el botón */
 button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 40px; /* Aumentar margen superior para bajar el botón */
+  margin-top: 20px; /* Margin above the button */
+  padding: 10px 20px; /* Button padding */
+  font-size: 1.2rem; /* Font size for the button */
+  cursor: pointer; /* Change cursor to pointer */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for the button */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  transition: background-color 0.3s; /* Smooth background color transition */
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .reel {
+    font-size: 1.2rem; /* Smaller font size for smaller screens */
+  }
+
+  button {
+    padding: 8px 16px; /* Adjust button padding for smaller screens */
+    font-size: 1rem; /* Smaller font size for button */
+  }
 }
