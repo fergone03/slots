@@ -5,37 +5,42 @@ import HomePage from "./HomePage";
 import BlackJack from "./BlackJack";
 import Ruleta from "./Ruleta";
 import AllGames from "./AllGames";
+import "./styles.css"; // Importa los estilos
 
 const App = () => {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Homepage</Link>
-          </li>
-          <li>
-            <Link to="/slots">Slots</Link>
-          </li>
-          <li>
-            <Link to="/blackjack">BlackJack</Link>
-          </li>
-          <li>
-            <Link to="/ruleta">Ruleta</Link>
-          </li>
-          <li>
-            <Link to="/allgames">Todos los juegos</Link>
-          </li>
-        </ul>
-      </nav>
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Homepage</Link>
+            </li>
+            <li>
+              <Link to="/slots">Slots</Link>
+            </li>
+            <li>
+              <Link to="/blackjack">BlackJack</Link>
+            </li>
+            <li>
+              <Link to="/ruleta">Ruleta</Link>
+            </li>
+            <li>
+              <Link to="/allgames">Todos los juegos</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/slots" element={<SlotMachine />} />
-        <Route path="/blackjack" element={<BlackJack />} />
-        <Route path="/ruleta" element={<Ruleta />} />
-        <Route path="/allgames" element={<AllGames />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/slots" element={<SlotMachine />} />
+          <Route path="/blackjack" element={<BlackJack />} />
+          <Route path="/ruleta" element={<Ruleta />} />
+          <Route path="/allgames" element={<AllGames />} />
+        </Routes>
+      </main>
     </Router>
   );
 };

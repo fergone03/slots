@@ -1,102 +1,125 @@
+/* Estilos generales */
 html,
 body {
-  height: 100%; /* Ensure full height for body */
-  margin: 0; /* Remove default margin */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  background-color: #f0f0f0;
 }
 
-body {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  background-color: #f0f0f0; /* Background color */
+header {
+  background-color: #007bff; /* Color del header */
+  color: white; /* Color del texto en el header */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
-
 .slot-machine {
   text-align: center;
-  padding: 20px; /* Padding around the slot machine */
-  border-radius: 10px; /* Rounded corners for the container */
-  background-color: white; /* Background color for the slot machine */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
-  width: 100%; /* Make the slot machine responsive */
-  max-width: 400px; /* Set a max-width for larger screens */
-  box-sizing: border-box; /* Include padding in width */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto; /* Centra el contenido */
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-.slot-machine {
-    text-align: center;
-    padding: 20px; /* Padding around the slot machine */
-    border-radius: 10px; /* Rounded corners for the container */
-    background-color: white; /* Background color for the slot machine */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
-    width: 100%; /* Make the slot machine responsive */
-    max-width: 400px; /* Set a max-width for larger screens */
-    box-sizing: border-box; /* Include padding in width */
+nav ul li {
+  margin: 0 15px;
 }
 
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #0056b3;
+  border-radius: 5px;
+}
+
+/* Ajustar el main para evitar que el contenido se solape con el header */
+main {
+  padding-top: 80px; /* Espacio para el header */
+}
+/* Ajustar reels-container para que mantenga la disposición horizontal */
+/* Ajustar reels-container para mantener la disposición correcta */
 .reels-container {
-    display: flex;
-    flex-direction: column; /* Arrange reels vertically */
-    justify-content: center; /* Center the reels vertically */
-    align-items: center; /* Center the reels horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0; /* Espacio entre las filas (ligeramente reducido) */
 }
 
 .reels {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center align vertically */
-    margin-bottom: 0; /* No space between rows */
-    width: fit-content; /* Adjust width to fit contents */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
 }
 
-/* Otros estilos permanecen igual... */
-
-
+/* Reducir espacio entre los reels individuales */
 .reel {
-  font-size: 1.5rem; /* Font size for the symbols */
-  margin: 0 0.1rem; /* Reduced horizontal margin between reels */
-  transition: transform 0.5s; /* Transition for spinning animation */
+  font-size: 1.5rem;
+  margin: 0 2px; /* Menor espacio horizontal entre los reels */
 }
 
-.reel-symbol {
-  line-height: 1; /* Reduce line-height to minimize height */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove any padding */
-  font-size: inherit; /* Inherit the font size from the parent */
-  text-align: center; /* Center the text */
+/* Responsividad del header */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column; /* Cambia las opciones de navegación a columna en pantallas pequeñas */
+  }
+
+  nav ul li {
+    margin-bottom: 10px;
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Reduce el tamaño de fuente en pantallas pequeñas */
+  }
 }
 
-.reel-spinning {
-  animation: spin 0.5s infinite;
-}
+/* Estilos para otros componentes no relacionados con .slot-machine */
 
-.highlight {
-  background-color: #ffff00; /* Highlight color for winning row */
-}
+/* Otros estilos de .slot-machine pueden seguir como estaban */
 
+/* (Los estilos para .slot-machine permanecen como están) */
 button {
-  margin-top: 20px; /* Margin above the button */
-  padding: 10px 20px; /* Button padding */
-  font-size: 1.2rem; /* Font size for the button */
-  cursor: pointer; /* Change cursor to pointer */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners for the button */
-  background-color: #007bff; /* Button background color */
-  color: white; /* Button text color */
-  transition: background-color 0.3s; /* Smooth background color transition */
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker background on hover */
+  background-color: #0056b3;
 }
 
-/* Responsive adjustments */
+/* Responsividad para otros componentes */
 @media (max-width: 600px) {
-  .reel {
-    font-size: 1.2rem; /* Smaller font size for smaller screens */
-  }
-
   button {
-    padding: 8px 16px; /* Adjust button padding for smaller screens */
-    font-size: 1rem; /* Smaller font size for button */
+    padding: 8px 16px;
+    font-size: 1rem;
   }
 }
