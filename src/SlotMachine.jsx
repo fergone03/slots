@@ -4,6 +4,7 @@ import "./styles.css";
 
 const numbers = ["💜", "💛", "🧡", "💚", "💙"];
 
+
 const SlotMachine = () => {
   useEffect(() => {
     document.title = "FortuneFlare - ¡Slots!"; // Cambia el título de la página

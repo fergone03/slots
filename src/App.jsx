@@ -6,11 +6,14 @@ import BlackJack from "./BlackJack";
 import Ruleta from "./Ruleta";
 import AllGames from "./AllGames";
 import "./styles.css"; // Importa los estilos
+import logo from "./assets/logo.svg"
+
 
 const App = () => {
   return (
     <Router>
       <header>
+              <img src={logo} alt="Custom Logo" style={{ height: '60px' }} />
         <nav>
           <ul>
             <li>
