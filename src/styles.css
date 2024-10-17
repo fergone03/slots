@@ -55,12 +55,15 @@ main {
 
 /* Ajuste del espaciado de los carretes */
 .reels-container {
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   gap: 0; /* Espacio horizontal entre carretes */
 }
 
 .reels {
+  border: 1px solid black;
+
   display: flex;
   flex-direction: column;
   gap: 0; /* Espacio vertical entre símbolos */
