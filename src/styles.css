@@ -58,13 +58,13 @@ main {
 .reels-container {
   display: flex;
   justify-content: center;
-  gap: 5px; /* Espacio horizontal entre carretes */
+  gap: 0; /* Espacio horizontal entre carretes */
 }
 
 .reels {
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Espacio vertical entre símbolos */
+  gap: 0; /* Espacio vertical entre símbolos */
 }
 
 /* Ajuste para cada símbolo */
