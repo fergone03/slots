@@ -1,29 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
 import SlotMachine from "./SlotMachine";
 import HomePage from "./HomePage";
 import BlackJack from "./BlackJack";
 import Ruleta from "./Ruleta";
 import AllGames from "./AllGames";
 import "./styles.css"; 
-import logo from "./assets/logo.svg"
+import logo from "./assets/logo.svg";
 
 
 const App = () => {
   return (
     <Router>
       <header>
-             <div class="logo">
-              <img src={logo} alt="Custom Logo" style={{ height: '60px' }} />
-              <h2 className="nombre-empresa">FortuneFlare</h2>
-              </div> 
+        <div className="logo">
+          <img src={logo} alt="Custom Logo" style={{ height: '60px' }} />
+          <h2 className="nombre-empresa">FortuneFlare</h2>
+        </div> 
         <nav>
-       <a href="./HomePage.jsx" className="navlink">Homepage</a>
-       <a href="./SlotMachine.jsx" className="navlink">Slots</a>
-       <a href="./BlackJack.jsx" className="navlink">BlackJack</a>
-       <a href="./Ruleta.jsx" className="navlink">Ruleta</a>
-       <a href="./AllGames.jsx" className="navlink">Todos los juegos</a>
-
+          <NavLink to="/" className="navlink">Homepage</NavLink>
+          <NavLink to="/slots" className="navlink">Slots</NavLink>
+          <NavLink to="/blackjack" className="navlink">BlackJack</NavLink>
+          <NavLink to="/ruleta" className="navlink">Ruleta</NavLink>
+          <NavLink to="/allgames" className="navlink">Todos los juegos</NavLink>
         </nav>
       </header>
 
